@@ -7,7 +7,7 @@ Dit bestand documenteert de ID's in `externally_connectable.ids`.
 |----|----------|----------|
 | `ebannlcfcakhaekmbeogkphbijghepbe` | **Bricks Infused** | Edge Add-ons (store, productie) |
 | `mogkemhemedhcmoopdlfdjklgjlhgmnp` | **Bricks Infused** | Dev (unpacked + `key` in Bricks-manifest) |
-| `maggacdmiigkoockdjdekdkflfochgbl` | **Bricks Infused** | Dev (unpacked zónder `key`; ID afgeleid van het pad in OneDrive — controleer in `edge://extensions`) |
+| `maggacdmiigkoockdjdekdkflfochgbl` | **Bricks Infused** | Dev (unpacked zónder `key`; ID afgeleid van het pad in OneDrive — actueel dev-ID) |
 
 ## Deze extensie (Zorgdomein Infused)
 
