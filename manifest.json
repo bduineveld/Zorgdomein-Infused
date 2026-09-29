@@ -3,8 +3,8 @@
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQHPBYo+4RIPraO5U4uITBv6WqwVu+VdBH6IKaB15DCK3YiGLpReEWCgpPORMN1OInZpBUFocnHgp0dGzJUKI9Kp9IaZD6+H/u6StXAV+7tvi0cIjIOwfrlyKNkzhfokhXkwYGfQP2HgAcijvTQjaP/APybEY7ddFqekN3U6BqNUxklPqMoKu8FRviR//0VqCYMifTKmOnTLNotNj1ywX8yRGrnBIwAFxowFhmas56iaO5o8IXzpfppzNCNTmGz2VkQ0jBlTuaHJQsSSqrEdubwQqSilv1mintJcKfYmS/QZrIS7seVq12hxpCA062gVT32co3/lX9FMMcyyYg9V8QIDAQAB",
   "name": "Zorgdomein Infused",
   "description": "Snelkoppelingen naar ZorgDomein-formulieren: standalone of vanuit je HIS (o.a. Bricks Infused).",
-  "version": "1.0.0",
-  "version_name": "v1.0.0 29-09-2026",
+  "version": "1.0.1",
+  "version_name": "v1.0.1 29-09-2026",
   "author": "Dokter Bart",
   "homepage_url": "https://dokterbart.nl/",
   "icons": {
@@ -34,16 +34,14 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://www.zorgdomein.nl/dashboard*",
-        "https://www.zorgdomein.nl/healthcare-request/*",
-        "https://www.zorgdomein.nl/supply-matcher/*"
-      ],
+      "matches": ["https://www.zorgdomein.nl/*"],
       "js": ["content_zd_dash.js"],
       "run_at": "document_end"
     },
     {
       "matches": [
+        "https://www.zorgdomein.nl/",
+        "https://www.zorgdomein.nl/?*",
         "https://www.zorgdomein.nl/dashboard*",
         "https://www.zorgdomein.nl/supply-matcher/*",
         "https://www.zorgdomein.nl/protocol/*",

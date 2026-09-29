@@ -1,6 +1,9 @@
+// Eigen scope: beide ZorgDomein-scripts draaien samen op /dashboard en delen anders
+// hun top-level const/let (dubbele ZDI_DEBUG liet het dashboardscript crashen).
+(() => {
 // Content script voor Zorgdomein dashboard
-// Dit script wordt uitgevoerd op https://www.zorgdomein.nl/dashboard
-// (bij client-side navigatie blijft dit script in het tabblad; daarom: alleen actief op /dashboard)
+// Draait op heel zorgdomein.nl: na zdlogin laadt ZorgDomein eerst "/" en navigeert pas
+// client-side naar /dashboard (geen nieuwe injectie). Actie alleen op /dashboard.
 
 const ZDI_DEBUG = false;
 if (!ZDI_DEBUG && typeof console !== 'undefined') {
@@ -20,6 +23,9 @@ let dashboardLinksRenderTimeout = null;
 let dashboardRenderRetryInterval = null;
 const DASHBOARD_LINKS_CONTAINER_ID = 'zdi-dashboard-shortcuts';
 let lastKnownDashboardUrl = window.location.href;
+// Link uit het HIS is bedoeld voor het tabblad dat ná de klik opent (of ververst wordt).
+// Oudere, al openstaande ZorgDomein-tabbladen mogen hem niet wegkapen.
+const ZDI_LOADED_AT = Date.now();
 
 // Functie om de laatste geklikte link op te halen en actie uit te voeren
 function handleLastClickedLink() {
@@ -42,6 +48,10 @@ function handleLastClickedLink() {
             const timestamp = Date.now();
             const timeDiff = timestamp - result.lastClickedTimestamp;
             
+            if (result.lastClickedTimestamp > ZDI_LOADED_AT) {
+                console.log('Link is newer than this tab, leaving it for the new tab');
+                return;
+            }
             // Alleen actie ondernemen als de link recent geklikt is (binnen 60 seconden)
             if (timeDiff < 60000) {
                 console.log('Recent link found:', result.lastClickedLink);
@@ -358,3 +368,4 @@ observer.observe(document.body, {
 });
 
 console.log('Zorgdomein content script initialized');
+})();

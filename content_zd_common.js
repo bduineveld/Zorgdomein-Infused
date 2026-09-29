@@ -1,3 +1,6 @@
+// Eigen scope: beide ZorgDomein-scripts draaien samen op /dashboard en delen anders
+// hun top-level const/let (dubbele ZDI_DEBUG liet het dashboardscript crashen).
+(() => {
 // Content script voor Zorgdomein pagina's
 // Dit script wordt uitgevoerd op verschillende Zorgdomein URL's
 
@@ -875,3 +878,4 @@ function initializeZorgdomeinPage() {
     // Start observer
     startZorgdomeinObserver();
 }
+})();
