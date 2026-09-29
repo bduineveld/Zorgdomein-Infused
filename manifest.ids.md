@@ -14,7 +14,7 @@ Dit bestand documenteert de ID's in `externally_connectable.ids`.
 | ID | Omgeving |
 |----|----------|
 | `dickknaonoknjbjcfmoafmkimkldeaef` | Dev (unpacked + `key` in dit manifest; private key: `../Zorgdomein Infused.pem`) |
-| _nog onbekend_ | Edge Add-ons (store, productie) — invullen na eerste upload, ook in `Bricks Infused/background.js` → `ZORGDOMEIN_EXT_IDS_PROD` |
+| `mehfpjeblkfbobhimioegkflielbcemk` | Edge Add-ons (store, productie) — ook in `Bricks Infused/background.js` → `ZORGDOMEIN_EXT_IDS_PROD` |
 
 Vóór store-upload: verwijder de dev-ID's van Bricks uit `externally_connectable.ids`
 (alleen `ebannlcfcakhaekmbeogkphbijghepbe` laten staan) en haal `key` uit het manifest.
