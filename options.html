@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instellingen Zorgdomein Infused</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1b75bb 0%, #29a9e0 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 2em;
+      font-weight: 700;
+      margin: 0 0 32px 0;
+      color: #2d3748;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    h1 img {
+      height: 36px;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #4a5568;
+      margin: 32px 0 12px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: #f7fafc;
+      border-radius: 8px;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #1b75bb;
+      cursor: pointer;
+    }
+
+    .checkbox-item label {
+      cursor: pointer;
+      font-weight: 500;
+      color: #4a5568;
+    }
+
+    .hint {
+      color: #718096;
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 0 0 12px 0;
+    }
+
+    .zorgdomein-link-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      align-items: center;
+      padding: 12px 16px;
+      background: #f7fafc;
+      border-radius: 8px;
+      border: 2px solid transparent;
+    }
+
+    .zorgdomein-link-row:hover {
+      background: #edf2f7;
+      border-color: #e2e8f0;
+    }
+
+    .zorgdomein-link-row input[type="text"] {
+      padding: 8px 12px;
+      border: 2px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 14px;
+      background: white;
+    }
+
+    .zorgdomein-link-row input.name {
+      width: 160px;
+    }
+
+    .zorgdomein-link-row input.path {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .zorgdomein-drop-placeholder {
+      height: 8px;
+      margin-bottom: 12px;
+      border-radius: 4px;
+      background: #bee3f8;
+    }
+
+    .episodelijst-toggle {
+      cursor: pointer;
+      font-size: 1.2em;
+      opacity: 0.3;
+      transition: opacity 0.2s;
+    }
+
+    .episodelijst-toggle.active {
+      opacity: 1;
+    }
+
+    .btn {
+      background: #1b75bb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #155d95;
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #4a5568;
+    }
+
+    .btn-secondary:hover {
+      background: #cbd5e0;
+    }
+
+    .btn-small {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 2px solid #e2e8f0;
+    }
+
+    #status {
+      color: #38a169;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .focus-highlight {
+      box-shadow: 0 0 0 3px rgba(27, 117, 187, 0.35);
+      border-radius: 8px;
+    }
+
+    code {
+      background: #edf2f7;
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 16px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .zorgdomein-link-row {
+        flex-wrap: wrap;
+      }
+
+      .zorgdomein-link-row input.name,
+      .zorgdomein-link-row input.path {
+        width: 100%;
+        flex: 1 1 100%;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>
+        <img src="zorgdomein.svg" alt="">
+        Instellingen Zorgdomein Infused
+      </h1>
+
+      <form id="optionsForm">
+        <div class="checkbox-item">
+          <input type="checkbox" id="opt-zorgdomein-dashboard">
+          <label for="opt-zorgdomein-dashboard">Toon snelkoppelingen in het ZorgDomein dashboard (bij "Direct naar diagnostiek")</label>
+        </div>
+
+        <h2 id="zorgdomein-section">Snelkoppelingen</h2>
+        <p class="hint">
+          Het pad is het deel na <code>https://www.zorgdomein.nl</code>, bijv. <code>/choose-product/…</code>.
+          Tip: op een ZorgDomein-formulier kun je rechtsboven op <strong>Snelkoppeling</strong> klikken om hem hier toe te voegen.
+          ⚕️ = in Bricks eerst de episodelijst laten kiezen.
+        </p>
+        <div id="zorgdomein-links-list"></div>
+        <button type="button" id="addZorgdomeinLink" class="btn btn-secondary btn-small">Nieuwe snelkoppeling toevoegen</button>
+
+        <h2>Koppeling met je HIS</h2>
+        <p class="hint">
+          Zorgdomein Infused werkt los. Met <em>Bricks Infused</em> verschijnen dezelfde snelkoppelingen onder
+          <strong>ZorgDomein</strong> in het verwijsmenu van het dossier; Bricks start de verwijzing en deze extensie
+          opent daarna het juiste formulier. Andere HIS-extensies kunnen op dezelfde manier koppelen (zie README).
+        </p>
+
+        <div class="actions">
+          <button type="submit" class="btn">Opslaan</button>
+          <span id="status"></span>
+          <button type="button" id="closeOptions" class="btn btn-secondary">Sluiten</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+
+</html>
